@@ -61,7 +61,7 @@ class App extends Component {
         editItem: true
         });
   }
-      
+
 
   render() {
     return (
@@ -91,7 +91,7 @@ class App extends Component {
 
 export default App;
 
-handleMatch.propTypes = {
-  item.propTypes.string,
-  id.PropTypes.Number
-}
+// handleMatch.propTypes = {
+//   item.propTypes.string,
+//   id.PropTypes.Number
+// }
