@@ -49,20 +49,40 @@ class App extends Component {
 
   // looks for matches of email extraction
   handleMatch = id => {
-      // looks at the filled empty array & filters it
-      const filteredItems = this.state.myArr.filter(item => item.id !== id);
-      // finds the value in the array
-      const selectedItem = this.state.myArr.find(item => item.id === id);
-      let exp = new RegExp(/([A-Za-z._-]+@[a-zA-Z0-9.-_]+\.[a-zA-Z0-9.-_]+)/, 'gi');
-      let extraction = this.state.myArr.map((selectedItem, item) => item.selectedItem===exp)
-      this.setState({
-        item: extraction.title,
-        id: id,
-        editItem: true
-        });
+    // looks at the filled empty array & filters it
+    // const filteredItems = this.state.myArr.filter(item => item.id !== id);
+    // finds the value in the array
+    // const selectedItem = this.state.myArr.find(item => item.id === id);
+    let newMatch = {
+      id: this.state.id,
+      title: this.state.item
+    }
+    let updatedNewMatch = [...this.state.item, newMatch];
+    let exp = new RegExp(/([A-Za-z._-]+@[a-zA-Z0-9.-_]+\.[a-zA-Z0-9.-_]+)/, 'gi');
+    // let results= names.filter(x => x.includes("s"));
+
+    // let extraction = this.state.myArr.filter((exp) => {
+    //   //  return (exp.match(item.id) === id ? item : extraction.title)  
+    //   // let idEqual = item.id === id ? item : "This is extraction"  
+    //   return this.myArr.some(exp)===true ? item : "This is extraction"
+    // })
+
+    let extraction = this.state.myArr.filter((item) => {
+      //  return (exp.match(item.id) === id ? item : extraction.title)  
+      // let idEqual = item.id === id ? item : "This is extraction"  
+      return console.log('success returns 2: ', exp.test(item.updatedNewMatch));
+    })
+
+    // this.employees = emp.filter(item => !this.data.some(d => d.QID === item.QID))
+    
+    this.setState({
+      myArr: updatedNewMatch,
+      item: extraction.title,
+      id: id,
+      editItem: true
+      });
   }
-
-
+      
   render() {
     return (
       <div className="container">
@@ -91,7 +111,7 @@ class App extends Component {
 
 export default App;
 
-// handleMatch.propTypes = {
-//   item.propTypes.string,
-//   id.PropTypes.Number
-// }
+
+  App.propTypes = {
+  title: PropTypes.string.isRequired
+}
